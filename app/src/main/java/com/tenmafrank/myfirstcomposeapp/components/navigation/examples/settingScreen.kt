@@ -1,13 +1,12 @@
 package com.tenmafrank.myfirstcomposeapp.components.navigation.examples
 
-import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,34 +14,27 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import com.tenmafrank.myfirstcomposeapp.components.navigation.examples.model.SettingsModel
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier, navigateToDetail: () -> Unit){
-    var showBox by remember { mutableStateOf(false) }
+fun settingScreen(modifier: Modifier = Modifier, settingsModel: SettingsModel, goToSetT: (SettingsModel) -> Unit) {
+    var text by remember { mutableStateOf("") }
+    var settingsModel = SettingsModel(id =  "usando template", darkmode = false)
     Column(modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(Modifier.weight(1f))
-        Text("LOGIN", fontSize = 30.sp)
+        Text("Settings id:${settingsModel.id} darkmode:${settingsModel.darkmode}", fontSize = 30.sp)
+        Spacer(Modifier.weight(1f))
         Button(onClick = {
-            navigateToDetail()
+            goToSetT(settingsModel)
         }) {
-            Text("NAVEGAR")
+            Text("navegar")
         }
         Button(onClick = {
-            showBox = true
         }) {
-            Text("back hander test")
+            Text("volver al inicio")
         }
         Spacer(Modifier.weight(1f))
-    }
-    if (showBox){
-        BackHandler {
-            showBox = false
-        }
-        Box (modifier = Modifier.fillMaxSize().background(Color.Red)) {
-            Text(text = "press back", color = Color.White)
-        }
     }
 }
