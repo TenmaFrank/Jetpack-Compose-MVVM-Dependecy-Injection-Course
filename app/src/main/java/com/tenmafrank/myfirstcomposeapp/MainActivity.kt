@@ -31,6 +31,9 @@ import com.tenmafrank.myfirstcomposeapp.components.advanced.MyBasicList
 import com.tenmafrank.myfirstcomposeapp.components.advanced.MyDerivatedState
 import com.tenmafrank.myfirstcomposeapp.components.advanced.MyInteractionSource
 import com.tenmafrank.myfirstcomposeapp.components.advanced.MyLaunchEffect
+import com.tenmafrank.myfirstcomposeapp.components.animations.MyAnimatedState
+import com.tenmafrank.myfirstcomposeapp.components.animations.MyAnimatedVisibility
+import com.tenmafrank.myfirstcomposeapp.components.animations.MyCrossfade
 import com.tenmafrank.myfirstcomposeapp.components.layout.Dropmen
 import com.tenmafrank.myfirstcomposeapp.components.layout.MyAlertDialogs
 import com.tenmafrank.myfirstcomposeapp.components.layout.MyColumn
@@ -72,7 +75,7 @@ class MainActivity : ComponentActivity() {
                     onDissmis = {showCustomDialog = false},
                     onContinue = {showCustomDialog = false}
                 )
-                MyNavigationWrapper()
+                MyCrossfade()
                 /*MyModalDrawer(drawerState = drawerstate) {
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
